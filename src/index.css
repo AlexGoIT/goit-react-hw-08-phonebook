@@ -14,6 +14,10 @@ code {
     monospace;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -21,6 +25,10 @@ h4,
 h5,
 h6,
 p {
+  margin-block: 0;
+}
+
+body {
   margin: 0;
 }
 
@@ -28,4 +36,29 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+textarea {
+  outline: none;
+}
+
+iframe {
+  border: none;
 }

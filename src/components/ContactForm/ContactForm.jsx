@@ -6,8 +6,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 import { Form } from './ContactForm.styled';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/contactsOperations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -52,7 +52,11 @@ const ContactForm = () => {
         required
         sx={{ mb: 2 }}
       />
-      <Button variant="contained" type="submit" sx={{ mb: 4 }}>
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{ mb: 4, color: '#FFD700', fontWeight: '700' }}
+      >
         Add contact
       </Button>
     </Form>
