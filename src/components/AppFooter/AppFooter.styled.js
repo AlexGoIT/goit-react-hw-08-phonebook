@@ -5,10 +5,10 @@ export const Footer = styled.footer`
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #1976d2;
+  background-color: #0057b8;
 
   p {
-    color: #fff;
+    color: #ffd700;
     text-align: center;
     font-size: 16px;
     font-weight: 500;
