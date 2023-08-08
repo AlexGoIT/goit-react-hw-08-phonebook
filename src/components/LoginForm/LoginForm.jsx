@@ -1,17 +1,16 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Wrapper, Form, FormTitle } from './RegisterForm.styled';
-import { passwordValidator } from 'utils/validators';
+import { Wrapper, Form, FormTitle } from './LoginForm.styled';
 import { useState } from 'react';
+import { passwordValidator } from 'utils/validators';
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const [passwordError, setPasswordError] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
 
     const form = e.target;
-    // const name = form.name.value.trim();
     // const email = form.email.value.trim();
     const password = form.password.value.trim();
 
@@ -24,24 +23,15 @@ const RegisterForm = () => {
 
     form.reset();
   };
+
   return (
     <Wrapper>
-      <FormTitle>Register</FormTitle>
+      <FormTitle>Login</FormTitle>
       <Form onSubmit={handleSubmit}>
         <TextField
-          label="Name"
-          variant="outlined"
-          name="name"
-          type="text"
-          pattern="^([A-Za-z-']{1,50})|([А-Яа-я-']{1,50})$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          sx={{ mb: 2 }}
-        />
-        <TextField
           label="E-mail"
-          variant="outlined"
           name="email"
+          variant="outlined"
           type="email"
           pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
           title="Email may contain only letters, apostrophe, dash and spaces."
@@ -50,9 +40,9 @@ const RegisterForm = () => {
         />
         <TextField
           error={passwordError}
-          label="Password"
-          variant="outlined"
+          label="Password *"
           name="password"
+          variant="outlined"
           type="password"
           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -64,11 +54,11 @@ const RegisterForm = () => {
           sx={{ mb: 2 }}
         />
         <Button variant="contained" type="submit">
-          Sign up
+          Sign in
         </Button>
       </Form>
     </Wrapper>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
