@@ -6,8 +6,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Logout from '@mui/icons-material/Logout';
 import { sxPaperProps, UserEmail } from './UserMenu.styled';
+import { useSelector } from 'react-redux';
+import { selectUserEmail } from 'redux/auth/authSelectors';
 
 const UserMenu = ({ anchorEl, onClick }) => {
+  const userEmail = useSelector(selectUserEmail);
   const open = Boolean(anchorEl);
 
   const handleMenuItemClick = e => {
@@ -25,7 +28,8 @@ const UserMenu = ({ anchorEl, onClick }) => {
       transformOrigin={{ horizontal: 'right', vertical: 'top' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
-      <UserEmail>test-user@gmail.com</UserEmail>
+      <UserEmail>You signed in as:</UserEmail>
+      <UserEmail>{userEmail ? userEmail : 'test-user@gmail.com'}</UserEmail>
       <Divider sx={{ mt: 1, mb: 1 }} />
       <MenuItem onClick={handleMenuItemClick}>
         <ListItemIcon>
