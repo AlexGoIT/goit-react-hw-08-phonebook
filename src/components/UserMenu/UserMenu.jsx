@@ -1,49 +1,31 @@
-import { PropTypes } from 'prop-types';
+import { useState } from 'react';
 
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
-import Logout from '@mui/icons-material/Logout';
-import { sxPaperProps, UserEmail } from './UserMenu.styled';
-import { useSelector } from 'react-redux';
-import { selectUserEmail } from 'redux/auth/authSelectors';
+import { Avatar, IconButton } from '@mui/material';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
-const UserMenu = ({ anchorEl, onClick }) => {
-  const userEmail = useSelector(selectUserEmail);
-  const open = Boolean(anchorEl);
+import MenuConteiner from 'components/MenuConteiner';
 
-  const handleMenuItemClick = e => {
-    console.log(e.currentTarget.textContent);
+const UserMenu = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
-    <Menu
-      anchorEl={anchorEl}
-      id="account-menu"
-      open={open}
-      onClose={onClick}
-      onClick={onClick}
-      PaperProps={sxPaperProps}
-      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-    >
-      <UserEmail>You signed in as:</UserEmail>
-      <UserEmail>{userEmail ? userEmail : 'test-user@gmail.com'}</UserEmail>
-      <Divider sx={{ mt: 1, mb: 1 }} />
-      <MenuItem onClick={handleMenuItemClick}>
-        <ListItemIcon>
-          <Logout fontSize="small" />
-        </ListItemIcon>
-        Logout
-      </MenuItem>
-    </Menu>
+    <>
+      <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+        <Avatar sx={{ width: 32, height: 32 }}>
+          <PermIdentityIcon />
+        </Avatar>
+      </IconButton>
+      <MenuConteiner anchorEl={anchorEl} onCloseMenu={handleClose} />
+    </>
   );
 };
 
 export default UserMenu;
-
-UserMenu.propTypes = {
-  anchorEl: PropTypes.object,
-  onClick: PropTypes.func.isRequired,
-};
