@@ -1,15 +1,19 @@
 import Logout from '@mui/icons-material/Logout';
 import { Divider, ListItemIcon, Menu, MenuItem } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from 'redux/auth/authOperations';
 import { selectUserEmail } from 'redux/auth/authSelectors';
-import { sxPaperProps, UserEmail } from './MenuConteiner.styled';
+import { sxPaperProps, UserEmail } from './MenuContainer.styled';
 
-const MenuConteiner = ({ anchorEl, onCloseMenu }) => {
+const MenuContainer = ({ anchorEl, onCloseMenu }) => {
+  const dispatch = useDispatch();
   const userEmail = useSelector(selectUserEmail);
   const open = Boolean(anchorEl);
 
   const handleMenuItemClick = e => {
     console.log(e.currentTarget.textContent);
+
+    dispatch(logout());
   };
 
   return (
@@ -36,4 +40,4 @@ const MenuConteiner = ({ anchorEl, onCloseMenu }) => {
   );
 };
 
-export default MenuConteiner;
+export default MenuContainer;

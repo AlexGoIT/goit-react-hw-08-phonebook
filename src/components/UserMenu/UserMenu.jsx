@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Avatar, IconButton } from '@mui/material';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
-import MenuConteiner from 'components/MenuConteiner';
+import MenuContainer from 'components/MenuContainer';
 
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -23,7 +23,7 @@ const UserMenu = () => {
           <PermIdentityIcon />
         </Avatar>
       </IconButton>
-      <MenuConteiner anchorEl={anchorEl} onCloseMenu={handleClose} />
+      <MenuContainer anchorEl={anchorEl} onCloseMenu={handleClose} />
     </>
   );
 };

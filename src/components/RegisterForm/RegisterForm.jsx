@@ -32,26 +32,18 @@ const RegisterForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    console.log(name, email, password);
-
-    dispatch(register({ name, email, password }));
-
-    // const form = e.target;
-    // const name = form.name.value.trim();
-    // const email = form.email.value.trim();
-    // const password = form.password.value.trim();
-
     if (!passwordValidator(password)) {
       setPasswordError(true);
       return;
     } else {
       setPasswordError(false);
-    }
 
-    // form.reset();
-    setName('');
-    setEmail('');
-    setPassword('');
+      dispatch(register({ name, email, password }));
+
+      setName('');
+      setEmail('');
+      setPassword('');
+    }
   };
   return (
     <Wrapper>
