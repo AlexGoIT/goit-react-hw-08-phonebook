@@ -16,7 +16,6 @@ const Navigation = () => {
         {isAuthorized && <Link to="/contacts">Contacts</Link>}
       </nav>
       {isAuthorized ? <UserMenu /> : <AuthNav />}
-      <UserMenu />
     </>
   );
 };
