@@ -17,17 +17,20 @@ const tokenControl = token => {
   }
 };
 
-export const register = createAsyncThunk('auth/register', async tunkAPI => {
-  try {
-    const { data } = await axios.post('/users/signup');
-    tokenControl(data.token);
-    Notify.success('Registration is successful');
-    return data;
-  } catch (err) {
-    Notify.failure(err.message);
-    return tunkAPI.rejectWithValue(err.message);
+export const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, tunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      tokenControl(data.token);
+      Notify.success('Registration is successful');
+      return data;
+    } catch (err) {
+      Notify.failure(err.message);
+      return tunkAPI.rejectWithValue(err.message);
+    }
   }
-});
+);
 
 export const login = createAsyncThunk(
   'auth/login',
