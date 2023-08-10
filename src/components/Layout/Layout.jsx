@@ -9,9 +9,11 @@ const Layout = () => {
   return (
     <>
       <Appbar />
-      <Suspense>
-        <Outlet fallback={<Loader />} />
-      </Suspense>
+      <main>
+        <Suspense>
+          <Outlet fallback={<Loader />} />
+        </Suspense>
+      </main>
       <AppFooter />
     </>
   );
