@@ -1,13 +1,17 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { lazy, useEffect } from 'react';
-import Layout from './Layout';
 import { useDispatch } from 'react-redux';
-import { refreshCurrentUser } from 'redux/auth/authOperations';
+import { lazy, useEffect } from 'react';
 
-const Home = lazy(() => import('pages/Home'));
-const Register = lazy(() => import('pages/Register'));
-const Login = lazy(() => import('pages/Login'));
-const Contacts = lazy(() => import('pages/Contacts'));
+import Layout from './Layout';
+
+import { refreshCurrentUser } from 'redux/auth/authOperations';
+import { PrivateRoute } from './Navigation/PrivateRoute';
+import { PublicRoute } from './Navigation/PublicRoute';
+
+const HomePage = lazy(() => import('pages/Home'));
+const RegisterPage = lazy(() => import('pages/Register'));
+const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,10 +23,37 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-        <Route path="contacts" element={<Contacts />} />
+        <Route
+          element={
+            <PublicRoute redirect="/">
+              <HomePage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PublicRoute redirect="/" restricted>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute redirect="/" restricted>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="contacts"
+          element={
+            <PrivateRoute redirect="/login">
+              <ContactsPage />
+            </PrivateRoute>
+          }
+        />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
