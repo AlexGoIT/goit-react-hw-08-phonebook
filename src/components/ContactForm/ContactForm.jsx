@@ -55,7 +55,7 @@ const ContactForm = () => {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mb: 4, color: '#FFD700', fontWeight: '700' }}
+        sx={{ mb: 4, color: '#FFD700', fontWeight: '700', bgcolor: '#0057B8' }}
       >
         Add contact
       </Button>
