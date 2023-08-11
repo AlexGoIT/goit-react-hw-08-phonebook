@@ -2,11 +2,12 @@ import Logout from '@mui/icons-material/Logout';
 import { Divider, ListItemIcon, Menu, MenuItem } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/authOperations';
-import { selectUserEmail } from 'redux/auth/authSelectors';
-import { sxPaperProps, UserEmail } from './MenuContainer.styled';
+import { selectUserEmail, selectUserName } from 'redux/auth/authSelectors';
+import { sxPaperProps, UserEmail, UserName } from './MenuContainer.styled';
 
 const MenuContainer = ({ anchorEl, onCloseMenu }) => {
   const dispatch = useDispatch();
+  const userName = useSelector(selectUserName);
   const userEmail = useSelector(selectUserEmail);
   const open = Boolean(anchorEl);
 
@@ -27,7 +28,7 @@ const MenuContainer = ({ anchorEl, onCloseMenu }) => {
       transformOrigin={{ horizontal: 'right', vertical: 'top' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
-      <UserEmail>You signed in as:</UserEmail>
+      <UserName>Hello, {userName}</UserName>
       <UserEmail>{userEmail ? userEmail : 'test-user@gmail.com'}</UserEmail>
       <Divider sx={{ mt: 1, mb: 1 }} />
       <MenuItem onClick={handleMenuItemClick}>

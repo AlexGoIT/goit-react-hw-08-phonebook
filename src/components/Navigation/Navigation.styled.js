@@ -1,6 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const NavWrapper = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
 export const StyledNavLink = styled(NavLink)`
   position: relative;
   font-weight: 500;

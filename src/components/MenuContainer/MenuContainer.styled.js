@@ -31,4 +31,10 @@ export const sxPaperProps = {
 
 export const UserEmail = styled.p`
   padding-block: 4px;
+  font-style: italic;
+`;
+
+export const UserName = styled.p`
+  padding-block: 4px;
+  font-weight: 500;
 `;

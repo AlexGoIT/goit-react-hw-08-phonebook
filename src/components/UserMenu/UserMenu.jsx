@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
-import { Avatar, IconButton } from '@mui/material';
+import { Avatar } from '@mui/material';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 import MenuContainer from 'components/MenuContainer';
+import { Link } from 'react-router-dom';
 
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -18,11 +19,13 @@ const UserMenu = () => {
 
   return (
     <>
-      <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-        <Avatar sx={{ width: 32, height: 32 }}>
+      <Link onClick={handleClick}>
+        <Avatar
+          sx={{ width: 32, height: 32, bgcolor: '#FFD700', color: '#0057B8' }}
+        >
           <PermIdentityIcon />
         </Avatar>
-      </IconButton>
+      </Link>
       <MenuContainer anchorEl={anchorEl} onCloseMenu={handleClose} />
     </>
   );

@@ -1,12 +1,20 @@
 import PropTypes from 'prop-types';
+import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import { selectIsAuthorized } from 'redux/auth/authSelectors';
+import { Navigate, useLocation } from 'react-router-dom';
+import { selectIsAuthorized, selectToken } from 'redux/auth/authSelectors';
 
 export const PrivateRoute = ({ redirect, children }) => {
   const isAuthorized = useSelector(selectIsAuthorized);
+  const token = useSelector(selectToken);
+  const location = useLocation();
+  const locationRef = useRef(location.pathname);
 
-  return isAuthorized ? children : <Navigate to={redirect} />;
+  return isAuthorized ? (
+    children
+  ) : (
+    <Navigate to={token ? locationRef : redirect} />
+  );
 };
 
 PrivateRoute.propTypes = {

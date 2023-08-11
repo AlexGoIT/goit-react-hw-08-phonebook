@@ -2,11 +2,6 @@ import axios from 'axios';
 import { Notify } from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-Notify.init({
-  position: 'center-top',
-  timeout: 3000,
-});
-
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const tokenControl = {
