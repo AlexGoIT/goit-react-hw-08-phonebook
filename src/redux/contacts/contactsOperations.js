@@ -21,7 +21,7 @@ export const addContact = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       const { data } = await axios.post('/contacts', contact);
-      Notify.success('Add contact is successfull');
+      Notify.success('Add contact is successful');
       return data;
     } catch (error) {
       Notify.success(error.message);

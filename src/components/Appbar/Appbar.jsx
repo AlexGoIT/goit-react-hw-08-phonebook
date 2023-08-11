@@ -7,7 +7,7 @@ import { Logo } from './Appbar.styled';
 const Appbar = () => {
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ bgcolor: '#0057b8' }}>
         <Container
           maxWidth="sm"
           sx={{

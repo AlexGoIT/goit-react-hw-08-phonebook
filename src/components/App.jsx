@@ -23,13 +23,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          element={
-            <PublicRoute redirect="/">
-              <HomePage />
-            </PublicRoute>
-          }
-        />
+        <Route index element={<HomePage />} />
         <Route
           path="register"
           element={
