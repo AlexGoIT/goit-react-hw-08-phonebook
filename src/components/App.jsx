@@ -5,8 +5,8 @@ import { lazy, useEffect } from 'react';
 import Layout from './Layout';
 
 import { refreshCurrentUser } from 'redux/auth/authOperations';
-import { PrivateRoute } from './Navigation/PrivateRoute';
-import { PublicRoute } from './Navigation/PublicRoute';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 
 const HomePage = lazy(() => import('pages/Home'));
 const RegisterPage = lazy(() => import('pages/Register'));
