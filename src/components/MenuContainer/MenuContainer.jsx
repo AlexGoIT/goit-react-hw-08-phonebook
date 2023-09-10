@@ -11,12 +11,6 @@ const MenuContainer = ({ anchorEl, onCloseMenu }) => {
   const userEmail = useSelector(selectUserEmail);
   const open = Boolean(anchorEl);
 
-  const handleMenuItemClick = e => {
-    console.log(e.currentTarget.textContent);
-
-    dispatch(logout());
-  };
-
   return (
     <Menu
       anchorEl={anchorEl}
@@ -24,14 +18,14 @@ const MenuContainer = ({ anchorEl, onCloseMenu }) => {
       open={open}
       onClose={onCloseMenu}
       onClick={onCloseMenu}
-      PaperProps={sxPaperProps}
+      slotProps={{ paper: sxPaperProps }}
       transformOrigin={{ horizontal: 'right', vertical: 'top' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
       <UserName>Hello, {userName}</UserName>
       <UserEmail>{userEmail ? userEmail : 'test-user@gmail.com'}</UserEmail>
       <Divider sx={{ mt: 1, mb: 1 }} />
-      <MenuItem onClick={handleMenuItemClick}>
+      <MenuItem onClick={() => dispatch(logout())}>
         <ListItemIcon>
           <Logout fontSize="small" />
         </ListItemIcon>

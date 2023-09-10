@@ -9,13 +9,11 @@ const Navigation = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
 
   return (
-    <>
-      <NavWrapper>
-        <StyledNavLink to="/">Home</StyledNavLink>
-        {isAuthorized && <StyledNavLink to="/contacts">Contacts</StyledNavLink>}
-        {isAuthorized ? <UserMenu /> : <AuthNav />}
-      </NavWrapper>
-    </>
+    <NavWrapper>
+      <StyledNavLink to="/">Home</StyledNavLink>
+      {isAuthorized && <StyledNavLink to="/contacts">Contacts</StyledNavLink>}
+      {isAuthorized ? <UserMenu /> : <AuthNav />}
+    </NavWrapper>
   );
 };
 

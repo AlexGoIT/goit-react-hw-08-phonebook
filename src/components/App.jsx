@@ -39,7 +39,7 @@ const App = () => {
           <Route
             path="login"
             element={
-              <PublicRoute redirect="/" restricted>
+              <PublicRoute redirect="/contacts" restricted>
                 <LoginPage />
               </PublicRoute>
             }
